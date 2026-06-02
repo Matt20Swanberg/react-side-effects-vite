@@ -1,31 +1,84 @@
-# React Side Effects Lab
+# Programming Jokes App
 
-## Overview
-This lab demonstrates how to handle **side effects** in React using the `useEffect` hook. The app fetches and displays a random **programming joke** when the page loads and allows users to fetch a new joke with a button click.
+A React application that fetches and displays programming jokes using the JokeAPI. The application automatically loads a joke when the page first renders and allows users to fetch a new joke by clicking a button.
 
-## Setup
+## Features
 
-Run `npm install` to install dependencies.
+- Fetches a programming joke when the application loads
+- Displays a loading message while waiting for the API response
+- Allows users to fetch a new joke with a button click
+- Uses React Hooks (`useState` and `useEffect`)
+- Handles API errors gracefully
 
-Then, run `npm run dev` to start up the React app at `http://localhost:5173`.
+## Technologies Used
 
-In another tab, run `npm run test` to run the test suite.
+- React
+- Vite
+- JavaScript
+- JokeAPI
 
-Before you start building out the application, examine the current code and component hierarchy. This will tell you how components can pass data to each other as well as where that information should be stored.
+## Screenshot
 
-## Deliverables
+![Programming Jokes App](./screenshots/screenshot.png)
 
-- **When our application loads**, make a `GET` request to `https://v2.jokeapi.dev/joke/Programming?type=single` to fetch a joke. Given your component tree, think about which component should be responsible for managing the joke data. Once the data is fetched, store it in state and render the joke on the page.
+## Installation
 
-- **When the `New Joke` button is clicked**, make another `GET` request to `https://v2.jokeapi.dev/joke/Programming?type=single` to fetch a new joke. Update the state accordingly so that the new joke replaces the old one in the UI.
+1. Clone the repository:
 
-- **While waiting for the fetch request to resolve**, display a loading message to inform the user that a joke is being fetched.
+```bash
+git clone <repository-url>
+```
 
-- **If the API request fails**, handle the error gracefully by displaying a message instead of breaking the UI.
+2. Navigate to the project directory:
 
-## Best Practices
+```bash
+cd <project-folder>
+```
 
-- Use the `useEffect` hook to make API calls at the appropriate lifecycle phase.
-- Manage component state using the `useState` hook.
-- Keep components modular and reusable.
-- Remove unnecessary console logs and commented-out code before submission.
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+## Usage
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open your browser and navigate to the local URL displayed in the terminal (typically `http://localhost:5173`).
+
+When the application loads, a programming joke will automatically be fetched and displayed. Click the **Get a New Joke** button to retrieve another joke from the API.
+
+## Running Tests
+
+```bash
+npm run test
+```
+
+## API Endpoint
+
+The application retrieves jokes from:
+
+```text
+https://v2.jokeapi.dev/joke/Programming?type=single
+```
+
+## Project Structure
+
+```text
+src/
+├── App.jsx
+├── components/
+│   ├── JokeDisplay.jsx
+│   └── FetchButton.jsx
+└── __tests__/
+    └── App.test.jsx
+```
+
+## Author
+
+Created by Matthew Swanberg as part of a React Hooks lab assignment course 5 mod 1.
