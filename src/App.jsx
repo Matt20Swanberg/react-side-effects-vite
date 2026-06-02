@@ -4,28 +4,39 @@ import FetchButton from './components/FetchButton'
 
 function App() {
 
+  // Stores the current joke text displayed on the page
   const [joke, setJoke] = useState("");
+
+  // Tracks whether a joke is currently being fetched
   const [loading, setLoading] = useState(false);
 
+  // Fetches a programming joke from the JokeAPI and updates state
   function fetchJoke() {
+
+    // Show the loading message while waiting for the API response
     setLoading(true);
+
     fetch("https://v2.jokeapi.dev/joke/Programming?type=single")
       .then((response) => {
 
         return response.json();
       })
       .then((data) => {
+
+        // Save the fetched joke and stop showing the loading message
         setJoke(data.joke);
         setLoading(false);
       })
       .catch((error) => {
+
+        // Display a fallback message if the API request fails
         console.error('Fetch error: ', error);
         setJoke('Failed to fetch joke. Please try again later!');
         setLoading(false);
       })
   }
 
-  // Step 2: Use `useEffect` to call a function that fetches a joke when the component mounts
+  // Fetch a joke once when the component first mounts
   useEffect(() => {
     fetchJoke();
   }, []);
@@ -33,12 +44,13 @@ function App() {
   return (
     <div className="app">
       <h1>Programming Jokes</h1>
-      {/* Step 4: Pass the necessary props to JokeDisplay */}
+      {/*  Pass joke data and loading state to the display component */}
       <JokeDisplay
         joke={joke}
         loading={loading}
       />
-      {/* Step 5: Pass the function to FetchButton so it can fetch a new joke on click */}
+
+      {/* Pass the fetch function so the button can request a new joke */}
       <FetchButton
         fetchJoke={fetchJoke}
       />

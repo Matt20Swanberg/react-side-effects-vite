@@ -1,8 +1,8 @@
-// Step 1: Accept `fetchJoke` as a prop
-
+// Button component used to fetch a new joke on demand
 const FetchButton = ({ fetchJoke }) => {
   return (
-    // Step 2: Add an onClick event that calls `fetchJoke`
+   
+    // Call the fetchJoke function when the button is clicked
     <button
       className="fetch-button"
       onClick={fetchJoke}
